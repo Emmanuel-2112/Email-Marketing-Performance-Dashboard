@@ -245,13 +245,16 @@ Revenue per Email = DIVIDE([Total Revenue], [Total Emails Sent], 0)
 > **Note:** Replace the image links below with your actual GitHub uploaded screenshot URLs after uploading your dashboard images to the repository.
 
 - Dashboard 1
-![Wanderlust-Dashboard1](https://github.com/user-attachments/assets/your-dashboard1-image-url)
+<img width="1375" height="755" alt="Dashboard 1" src="https://github.com/user-attachments/assets/30430f50-28ca-45ce-84a0-f4e3982cafcd" />
+
 
 - Dashboard 2
-![Wanderlust-Dashboard2](https://github.com/user-attachments/assets/your-dashboard2-image-url)
+<img width="1368" height="753" alt="Dashboard 2" src="https://github.com/user-attachments/assets/10cac854-d388-4550-9a0b-cff157ce8391" />
+
 
 - Dashboard 3
-![Wanderlust-Dashboard3](https://github.com/user-attachments/assets/your-dashboard3-image-url)
+<img width="1370" height="753" alt="Dashboard 3" src="https://github.com/user-attachments/assets/d869f4ec-323a-4177-ab9d-d082c533526d" />
+
 
 # Page 1: Executive Summary (KPI Overview)
 - Total Revenue ($878.19K)
