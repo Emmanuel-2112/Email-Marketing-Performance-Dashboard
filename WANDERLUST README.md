@@ -11,7 +11,7 @@ Taiwo Emmanuel
 May–June 2026
 
 # Abstract
-This project delivers an end-to-end analysis of Wanderlust Adventures' email marketing campaigns to evaluate campaign performance, customer engagement, revenue generation, and customer journey flow. Using Power BI, raw transactional email data was transformed into an interactive, executive-ready dashboard that highlights key performance indicators, compares campaign effectiveness, tracks engagement trends over time, and maps the customer journey funnel — all to support data-driven marketing decisions.
+This project delivers an end-to-end analysis of Wanderlust Adventures Email Marketing Campaigns to evaluate campaign performance, customer engagement, revenue generation, and customer journey flow. Using Power BI, raw transactional email data was transformed into an interactive, executive-ready dashboard that highlights key performance indicators, compares campaign effectiveness, tracks engagement trends over time, and maps the customer journey funnel — all to support data-driven marketing decisions.
 
 # Background
 Email marketing teams often struggle to measure what is truly working across a multi-campaign funnel. Open rates, click rates, and conversion metrics are collected but rarely synthesized into a single analytical view. This project was designed to consolidate Wanderlust Adventures' five years of email campaign data into one interactive dashboard that enables marketing managers to quickly identify which campaigns are driving revenue, how customers are moving through the engagement funnel, and when engagement is highest or declining.
@@ -22,7 +22,7 @@ The project aimed at analyzing Wanderlust Adventures' email marketing campaign d
 # Challenges Faced During the Project
 - Raw data provided across two separate CSV files with different structures
 - Date columns contained null values requiring careful flag-based transformation
-- No pre-built measures or KPIs — all metrics calculated from scratch using DAX
+- No pre-built measures or KPIs — all metrics calculated from scratch using DAX measures
 - Funnel/Sankey dataset required multi-step filtering to isolate usable path data
 - Needed to translate raw email event records into business-meaningful engagement metrics
 
@@ -118,37 +118,62 @@ Total Conversions = SUM('1filtered_dataset'[Converted])
 
 ## Total Revenue
 ```DAX
-Total Revenue = SUM('1filtered_dataset'[Revenue_Clean])
+Total Revenue = SUM('1filtered_dataset'[Revenue])
 ```
 
 ## Open Rate
 ```DAX
-Open Rate = DIVIDE([Total Opens], [Total Emails Sent], 0)
+Open Rate = 
+DIVIDE(
+    COUNT('1filtered_dataset'[open_date]),
+    COUNT('1filtered_dataset'[sent_date]),
+    0
+)
 ```
 
 ## Click Rate
 ```DAX
-Click Rate = DIVIDE([Total Clicks], [Total Emails Sent], 0)
+Click Rate = 
+DIVIDE(
+    COUNT('1filtered_dataset'[click_date]),
+    COUNT('1filtered_dataset'[sent_date]),
+    0
+)
 ```
 
 ## Click-to-Open Rate (CTOR)
 ```DAX
-CTOR = DIVIDE([Total Clicks], [Total Opens], 0)
+CTOR = 
+DIVIDE(
+    COUNT('1filtered_dataset'[click_date]),
+    COUNT('1filtered_dataset'[open_date]),
+    0
+)
 ```
 
 ## Conversion Rate
 ```DAX
-Conversion Rate = DIVIDE([Total Conversions], [Total Emails Sent], 0)
+Conversion Rate = 
+DIVIDE(
+    COUNT('1filtered_dataset'[transaction_date]),
+    COUNT('1filtered_dataset'[click_date]),
+    0
+)
 ```
 
 ## Bounce Rate
-```DAX
-Bounce Rate = DIVIDE([Total Bounces], [Total Emails Sent], 0)
+```DAXBounce Rate = 
+DIVIDE(
+    COUNT('1filtered_dataset'[bounce_date]),
+    COUNT('1filtered_dataset'[sent_date]),
+    0
+)
 ```
 
-## Average Order Value
+## Average Booking Value
 ```DAX
-Avg Order Value = DIVIDE([Total Revenue], [Total Conversions], 0)
+Avg Booking Value = 
+AVERAGE('1filtered_dataset'[Revenue])
 ```
 
 ## Revenue per Email
@@ -170,35 +195,47 @@ Revenue per Email = DIVIDE([Total Revenue], [Total Emails Sent], 0)
 
 ## 1. Which email campaign has the highest open rate and click rate?
 - **Definition:** This analysis evaluates and compares all four email campaigns based on recipient engagement — measuring how many people opened the email, how many clicked through, and the ratio of clicks to opens (CTOR). The goal is to identify which campaign messaging and targeting is resonating most with recipients.
+  
 - **Key Metrics Used:** Open Rate, Click Rate, CTOR, Total Emails Sent
+  
 - **Dashboard Visuals That Explain This:**
   - KPI Cards: Open Rate, Click Rate, CTOR (overall summary)
   - Pie Chart: Open Rate per Campaign (share of total engagement)
   - Bar Chart: Click Rate per Campaign (ranked by click performance)
   - Clustered Bar Chart: Engagement Rates per Campaign (Open Rate, Click Rate, CTOR side by side)
   - Campaign Metric Summary Table: All campaigns compared across every engagement metric
+    
 - **Business Value:** This analysis helps marketing teams understand which email type and messaging style drives the most engagement, enabling smarter subject line, timing, and content decisions for future campaigns.
 
 ## 2. Which campaign is generating the most revenue?
 - **Definition:** This analysis evaluates revenue contribution and conversion efficiency across all four campaigns to identify which campaigns are not just engaging customers but driving actual bookings. It distinguishes between high-open/low-convert campaigns and those that move subscribers to purchase.
+  
 - **Key Metrics Used:** Total Revenue, Conversion Rate, Average Order Value, Total Conversions
+  
 - **Dashboard Visuals That Explain This:**
   - KPI Cards: Total Revenue ($878.19K), Avg Booking Value ($987.84), Conversions (902)
   - Campaign Metric Summary Table: Revenue and Conversion Rate per campaign
+    
 - **Business Value:** This insight enables the marketing team to prioritize high-revenue campaigns, refine low-converting campaigns, and align email strategy with direct booking revenue outcomes.
 
 ## 3. How are customers flowing through the journey funnel?
 - **Definition:** This analysis maps the customer journey from initial segment (New Leads vs. Existing Customers) through engagement stages (Provided Interests, Discount, Skipped Stage) to final outcomes (Qualified/Booked, No Response). It reveals where customers are dropping off and which paths lead to conversions.
+  
 - **Key Metrics Used:** Volume (count of customers per journey path), Full_Path labels
+  
 - **Dashboard Visuals That Explain This:**
   - Sankey/Funnel Chart: Customer Journey Flow (from Segment → Engagement Stage → Outcome)
+    
 - **Business Value:** Understanding the funnel reveals which customer segments and engagement pathways are most likely to convert to bookings, and where the greatest drop-off occurs — enabling targeted re-engagement strategies.
 
 ## 4. Are there engagement trends over the 2019–2023 period?
 - **Definition:** This analysis examines how email engagement — opens and clicks — has changed year by year and month by month across the five-year campaign window. It identifies periods of high activity, seasonal patterns, and any year-over-year decline or growth.
+  
 - **Key Metrics Used:** Open Rate, Click Rate, Total Emails Sent, Year, Month
+  
 - **Dashboard Visuals That Explain This:**
   - Line Chart: Engagement Over Time (Open Rate and Click Rate trended by month/year)
+    
 - **Business Value:** Time-trend analysis helps the marketing team plan campaign timing, anticipate seasonal peaks in travel interest, and assess whether overall email program health is improving or declining.
 
 ---
