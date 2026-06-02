@@ -94,7 +94,7 @@ A flat model was used given the single primary fact table structure:
 - All DAX measures were created within the 1filtered_dataset table
 - No complex relationships required — all campaign analysis driven by Campaign_Short as the grouping dimension
 
-# 🪤 3. DAX Measures
+# 3. DAX Measures
 
 ## Total Emails Sent
 ```DAX
@@ -242,36 +242,56 @@ Revenue per Email = DIVIDE([Total Revenue], [Total Emails Sent], 0)
 
 # 🎨 DASHBOARD OVERVIEW
 
-> **Note:** Replace the image links below with your actual GitHub uploaded screenshot URLs after uploading your dashboard images to the repository.
-
 - Dashboard 1
 <img width="1375" height="755" alt="Dashboard 1" src="https://github.com/user-attachments/assets/30430f50-28ca-45ce-84a0-f4e3982cafcd" />
 
-
-- Dashboard 2
-<img width="1368" height="753" alt="Dashboard 2" src="https://github.com/user-attachments/assets/10cac854-d388-4550-9a0b-cff157ce8391" />
-
-
-- Dashboard 3
-<img width="1370" height="753" alt="Dashboard 3" src="https://github.com/user-attachments/assets/d869f4ec-323a-4177-ab9d-d082c533526d" />
-
-
-# Page 1: Executive Summary (KPI Overview)
+# Dashboard 1 :
+# Executive Summary (KPI Overview)
 - Total Revenue ($878.19K)
 - Total Emails Sent (42K)
 - Average Booking Value ($987.84)
 - Overall Open Rate (82.74%)
 - Overall Click Rate (20.65%)
-- CTOR (24.96%)
+- CTOR - Click To Open Rate (24.96%)
 - Total Conversions (902)
 - Bounce Rate (0.0%)
-
-# Page 2: Campaign Performance Analysis
 - Open Rate per Campaign (Pie Chart)
 - Click Rate per Campaign (Bar Chart)
+  
+# Campaign Performance Analysis
 - Engagement Rates per Campaign — Open Rate, Click Rate, CTOR (Clustered Bar Chart)
 - Campaign Metric Summary Table (all campaigns × all metrics)
 - Year slicer (2019, 2020, 2021, 2022, 2023, Select All)
+
+------
+- Dashboard 2
+<img width="1368" height="753" alt="Dashboard 2" src="https://github.com/user-attachments/assets/10cac854-d388-4550-9a0b-cff157ce8391" />
+
+# Dashboard 2 : Revenue Analysis (KPI Overview)
+- Total Revenue ($878.19K)
+- Average Booking Value ($987.84)
+- Revenue Per Email ($20.86)
+- Total Revenue Distribution By Campaign (Donut Chart)
+- Revenue By Year And Campaign (Clustered Column Chart)
+- Conversion Per Campaign (Stacked Column Chart)
+- Average Booking Value By Campaign (Clustered bar Chart)
+- Total Revenue & Revenue Per Emails By Campaign (Line & Clustered Column Chart)
+
+----
+- Dashboard 3
+<img width="1370" height="753" alt="Dashboard 3" src="https://github.com/user-attachments/assets/d869f4ec-323a-4177-ab9d-d082c533526d" />
+
+# Dashboard 3 : 
+# Customer Journey Funnel (KPI Overview)
+- Total Qualified (87K)
+- Total lost (105K)
+- Ratio Total Qualified To Total Lost (0.84)
+- Customer Journey Funnel (Annual)
+- Funnel Path Details (Table)
+  
+# Customer Engagement Over Time
+- Open Rate Vs Click Rate Over Time (2019 - 2023)
+- Monthly Send Volume By Campaign (Line Chart)
 
 ---
 
